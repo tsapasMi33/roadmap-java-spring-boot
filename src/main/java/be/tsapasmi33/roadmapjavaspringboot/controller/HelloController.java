@@ -1,4 +1,4 @@
-package be.tsapasmi33.roadmapjavaspringboot.controllers;
+package be.tsapasmi33.roadmapjavaspringboot.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

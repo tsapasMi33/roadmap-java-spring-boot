@@ -1,4 +1,4 @@
-package be.tsapasmi33.roadmapjavaspringboot.business;
+package be.tsapasmi33.roadmapjavaspringboot.service;
 
 import be.tsapasmi33.roadmapjavaspringboot.model.Artist;
 import be.tsapasmi33.roadmapjavaspringboot.repository.ArtistRepository;

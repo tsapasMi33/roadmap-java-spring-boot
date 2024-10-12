@@ -1,7 +1,7 @@
-package be.tsapasmi33.roadmapjavaspringboot.controllers;
+package be.tsapasmi33.roadmapjavaspringboot.controller;
 
-import be.tsapasmi33.roadmapjavaspringboot.business.ArtistService;
 import be.tsapasmi33.roadmapjavaspringboot.model.Artist;
+import be.tsapasmi33.roadmapjavaspringboot.service.ArtistService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
