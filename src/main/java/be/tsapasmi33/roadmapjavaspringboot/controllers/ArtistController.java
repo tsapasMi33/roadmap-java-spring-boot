@@ -90,4 +90,15 @@ public class ArtistController {
         artistService.addArtist(artist);
         return "redirect:/artists/" + artist.getId();
     }
+
+    @DeleteMapping("/artists/{id:[0-9]+}")
+    public String delete(Model model, @PathVariable("id") long id) {
+        Artist existing = artistService.getArtist(id);
+
+        if (existing != null) {
+            artistService.deleteArtist(id);
+        }
+
+        return "redirect:/artists";
+    }
 }
