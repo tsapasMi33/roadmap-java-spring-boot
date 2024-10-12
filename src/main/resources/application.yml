@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/reservations?autoreconnect = true&useSSL=false&serverTimezone=Europe/Brussels&useLegacyDatetimeCode=false
+    username: root
+    password:
+    tomcat:
+      test-on-borrow: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+
+  flyway:
+    baseline-on-migrate: true
+    url: jdbc:mariadb://localhost:3306/reservations
+    user: root
+    password:
