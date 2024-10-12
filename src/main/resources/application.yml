@@ -1,4 +1,6 @@
 spring:
+
+
   datasource:
     url: jdbc:mariadb://localhost:3306/reservations?autoreconnect = true&useSSL=false&serverTimezone=Europe/Brussels&useLegacyDatetimeCode=false
     username: root
@@ -19,3 +21,8 @@ spring:
     url: jdbc:mariadb://localhost:3306/reservations
     user: root
     password:
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
