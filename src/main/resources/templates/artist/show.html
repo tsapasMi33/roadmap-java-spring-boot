@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/main}">
 <head>
     <title>Fiche d'un artiste</title>
@@ -9,7 +11,7 @@
     <div layout:fragment="content">
         <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
 
-        <div class="actions">
+        <div sec:authorize="hasRole('admin')" class="actions">
             <a th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a>
             <form th:id="|deleteForm-${artist.id}|"
                   th:action="@{/artists/{id}(id=${artist.id})}" th:method="delete">
@@ -20,7 +22,7 @@
 
         </div>
 
-        <nav><a th:href="@{/artists}">Retour à l'index</a></nav>
+        <nav><a th:href="@{/artists}">Go to Artists</a></nav>
     </div>
 </div>
 </body>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/main}">
 <head>
     <title>Liste des artistes</title>
@@ -7,24 +9,28 @@
 <body>
 <div class="container">
     <div layout:fragment="content">
-        <h1 th:text="${title}">Liste des artistes</h1>
+        <h1 th:text="${title}">List of Artists</h1>
 
         <table th:unless="${#lists.isEmpty(artists)}">
             <thead>
             <tr>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th colspan="3">Actions</th>
+                <th sec:authorize="isAuthenticated()" colspan="3">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="artist : ${artists}">
                 <td th:text="${artist.firstname}">Bob</td>
                 <td th:text="${artist.lastname}">Sull</td>
-                <td><a th:href="@{/artists/{id}(id=${artist.id})}">View</a></td>
-                <td><a th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a></td>
                 <td>
-                    <form th:id="|deleteForm-${artist.id}|"
+                    <a sec:authorize="isAuthenticated()" th:href="@{/artists/{id}(id=${artist.id})}">View</a>
+                </td>
+                <td>
+                    <a sec:authorize="hasRole('admin')" th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a>
+                </td>
+                <td>
+                    <form sec:authorize="hasRole('admin')" th:id="|deleteForm-${artist.id}|"
                           th:action="@{/artists/{id}(id=${artist.id})}" th:method="delete">
                         <a href="#"
                            th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))

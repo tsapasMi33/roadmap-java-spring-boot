@@ -24,13 +24,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/").permitAll();
-                    auth.requestMatchers("/").hasRole("ADMIN");
-                    auth.requestMatchers("/user").hasRole("USER");
+                    auth.requestMatchers("/artists").permitAll();
+                    auth.requestMatchers("/admin").hasRole("admin");
                     auth.anyRequest().authenticated();
                 })
-                .formLogin(Customizer.withDefaults())
+                .formLogin(login -> login
+                        .defaultSuccessUrl("/artists", true))
                 .rememberMe(Customizer.withDefaults())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                                .logoutSuccessUrl("/artists")
+                                .permitAll()
+                        )
                 .build();
     }
 
