@@ -4,6 +4,7 @@ import be.tsapasmi33.roadmapjavaspringboot.model.Artist;
 import be.tsapasmi33.roadmapjavaspringboot.service.ArtistService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class ArtistController {
 
     private final ArtistService artistService;
-
-    public ArtistController(ArtistService artistService) {
-        this.artistService = artistService;
-    }
 
     @GetMapping("/artists")
     public String index(Model model) {
@@ -54,7 +52,7 @@ public class ArtistController {
         if (referer != null && !referer.isEmpty()) {
             model.addAttribute("back", referer);
         } else {
-            model.addAttribute("back", "/artists" + artist.getId());
+            model.addAttribute("back", "/artists/" + artist.getId());
         }
 
         return "artist/edit";

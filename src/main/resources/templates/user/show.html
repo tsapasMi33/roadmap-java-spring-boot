@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>User Details</title>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1 th:text="|${user.firstname}  ${user.lastname}|">Bob Sull</h1>
+
+        <div class="actions">
+            <a th:href="@{/users/{id}/edit(id=${user.id})}">Edit</a>
+            <form th:id="|deleteForm-${user.id}|"
+                  th:action="@{/users/{id}(id=${user.id})}" th:method="delete">
+                <a href="#" th:onclick="|if(confirm('Confirm delete user #${user.id}'))
+                 		document.getElementById('deleteForm-${user.id}').submit();
+                 		return false;|">Delete</a>
+            </form>
+
+        </div>
+
+        <nav><a th:href="@{/users}">Back to the List</a></nav>
+    </div>
+</div>
+</body>
+</html>

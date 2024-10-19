@@ -19,6 +19,9 @@
                 <li sec:authorize="hasRole('admin')" th:classappend="${module == 'create' ? 'active' : ''}">
                     <a href="#" th:href="@{/artists/create}">Add an Artist</a>
                 </li>
+                <li sec:authorize="hasRole('admin')" th:classappend="${module == 'users' ? 'active' : ''}">
+                    <a href="#" th:href="@{/users}">Manage Users</a>
+                </li>
                 <li sec:authorize="!isAuthenticated()">
                     <a href="#" th:href="@{/login}">Login</a>
                 </li>

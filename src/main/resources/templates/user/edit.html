@@ -10,12 +10,18 @@
 <body>
 <div class="container">
     <div layout:fragment="content">
-        <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
+        <h1 th:text="|${user.firstname}  ${user.lastname}|">Bob Sull</h1>
 
-        <form th:action="@{/artists/{id}/edit(id=${artist.id})}" th:object="${artist}" th:method="put">
+        <form th:action="@{/users/{id}/edit(id=${user.id})}" th:object="${user}" th:method="put">
             <div>
                 <label>Id:</label>
-                <span th:text="${artist.id}">1</span>
+                <span th:text="${user.id}">1</span>
+            </div>
+            <div>
+                <label>Login:</label>
+                <input type="text" th:field="*{login}">
+                <p th:if="${#fields.hasErrors('login')}"
+                   th:errors="*{login}" th:errorclass="fieldError"></p>
             </div>
             <div>
                 <label>Firstname:</label>
@@ -30,13 +36,20 @@
                    th:errors="*{lastname}" th:errorclass="fieldError"></p>
             </div>
             <div>
+                <label for="role">Role:</label>
+                <select id="role" th:field="*{role}">
+                    <option th:value="'admin'" th:text="Administrator"></option>
+                    <option th:value="'member'" th:text="Member"></option>
+                </select>
+            </div>
+            <div>
                 <button type="submit" th:text="Edit">Edit</button>
                 <button type="reset" th:text="Reset">Reset</button>
                 <a th:href="${back}">Cancel</a>
             </div>
         </form>
 
-        <nav><a th:href="@{/artists}">Back to the List</a></nav>
+        <nav><a th:href="@{/users}">Back to the List</a></nav>
     </div>
 </div>
 </body>

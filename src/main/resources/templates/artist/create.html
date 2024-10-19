@@ -26,12 +26,12 @@
                    th:errors="*{lastname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <button type="submit" th:text="Ajouter">Ajouter</button>
-                <a th:href="${back}">Annuler</a>
+                <button type="submit" th:text="Add">Add</button>
+                <a th:href="${back}">Cancel</a>
             </div>
         </form>
 
-        <nav><a th:href="@{/artists}">Retour à l'index</a></nav>
+        <nav><a th:href="@{/artists}">Back to the List</a></nav>
     </div>
 </div>
 </body>
