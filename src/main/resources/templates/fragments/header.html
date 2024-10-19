@@ -5,29 +5,32 @@
     <meta charset="utf-8">
     <title>Header fragment</title>
 </head>
-    <body>
-        <header class="navbar navbar-fixed-top" th:fragment="header">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">The best Artists</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li th:classappend="${module == 'artists' ? 'active' : ''}">
-                            <a href="#" th:href="@{/artists}">Artists</a>
-                        </li>
-                        <li sec:authorize="!isAuthenticated()">
-                            <a th:href="@{/login}" class="btn btn-primary">Login</a>
-                        </li>
-                        <li sec:authorize="!isAuthenticated()">
-                            <a th:href="@{/register}" class="btn btn-secondary">Create an Account</a>
-                        </li>
-                        <li sec:authorize="isAuthenticated()">
-                            <a href="#" th:href="@{/logout}">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-    </body>
+<body>
+<header class="navbar navbar-fixed-top" th:fragment="header">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">The best Artists</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li th:classappend="${module == 'artists' ? 'active' : ''}">
+                    <a href="#" th:href="@{/artists}">Artists</a>
+                </li>
+                <li sec:authorize="hasRole('admin')" th:classappend="${module == 'create' ? 'active' : ''}">
+                    <a href="#" th:href="@{/artists/create}">Add an Artist</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="#" th:href="@{/login}">Login</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="#" th:href="@{/register}">Create an Account</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a href="#" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+</body>
 </html>

@@ -2,19 +2,17 @@ package be.tsapasmi33.roadmapjavaspringboot.service;
 
 import be.tsapasmi33.roadmapjavaspringboot.model.User;
 import be.tsapasmi33.roadmapjavaspringboot.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public List<User> getAllUsers(){
         List<User> users = new ArrayList<>();
