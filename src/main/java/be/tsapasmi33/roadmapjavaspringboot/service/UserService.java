@@ -3,6 +3,7 @@ package be.tsapasmi33.roadmapjavaspringboot.service;
 import be.tsapasmi33.roadmapjavaspringboot.model.User;
 import be.tsapasmi33.roadmapjavaspringboot.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public List<User> getAllUsers(){
         List<User> users = new ArrayList<>();
@@ -27,6 +29,9 @@ public class UserService {
     }
 
     public void addUser(User user) {
+
+        user.setRole("member");
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 

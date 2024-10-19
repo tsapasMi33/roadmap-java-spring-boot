@@ -25,6 +25,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/artists").permitAll();
+                    auth.requestMatchers("/register").permitAll();
                     auth.requestMatchers("/users/**").hasRole("admin");
                     auth.anyRequest().authenticated();
                 })

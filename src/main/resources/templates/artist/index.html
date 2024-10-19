@@ -11,12 +11,12 @@
     <div layout:fragment="content">
         <h1 th:text="${title}">List of Artists</h1>
 
-        <table th:unless="${#lists.isEmpty(artists)}">
+        <table class="table table-striped" th:unless="${#lists.isEmpty(artists)}">
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th sec:authorize="isAuthenticated()" colspan="3">Actions</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col" sec:authorize="isAuthenticated()" colspan="3">Actions</th>
             </tr>
             </thead>
             <tbody>

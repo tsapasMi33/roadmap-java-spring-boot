@@ -11,18 +11,18 @@
     <div layout:fragment="content">
         <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
 
-        <div sec:authorize="hasRole('admin')" class="actions">
-            <a th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a>
+        <div class="container-fluid" sec:authorize="hasRole('admin')" style="display: flex; justify-content: start;">
+            <a class="btn btn-primary" href="#" role="button" th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a>
             <form th:id="|deleteForm-${artist.id}|"
                   th:action="@{/artists/{id}(id=${artist.id})}" th:method="delete">
-                <a href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
+                <a class="btn btn-danger" role="button" href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
                  		document.getElementById('deleteForm-${artist.id}').submit();
                  		return false;|">Delete</a>
             </form>
 
+        <nav><a class="btn btn-secondary" href="#" role="button" th:href="@{/artists}">Go to Artists</a></nav>
         </div>
 
-        <nav><a th:href="@{/artists}">Go to Artists</a></nav>
     </div>
 </div>
 </body>

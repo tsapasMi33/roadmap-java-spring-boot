@@ -9,6 +9,7 @@
 <div class="container">
     <div layout:fragment="content">
         <h1 th:text="|${user.firstname}  ${user.lastname}|">Bob Sull</h1>
+        <h2 th:text="${user.role}">role</h2>
 
         <div class="actions">
             <a th:href="@{/users/{id}/edit(id=${user.id})}">Edit</a>

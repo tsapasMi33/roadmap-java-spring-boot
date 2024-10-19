@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <div layout:fragment="content">
-        <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
+
 
         <form th:action="@{/artists/create}" th:object="${artist}" method="post">
             <div>

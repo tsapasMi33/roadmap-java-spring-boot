@@ -91,4 +91,23 @@ public class UserController {
 
         return "redirect:/users";
     }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+
+        User user = new User(null, null, null, null);
+        model.addAttribute("user",user);
+
+        return "user/register";
+    }
+
+    @PostMapping("/register")
+    public String store(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "user/register";
+        }
+
+        userService.addUser(user);
+        return "redirect:/login";
+    }
 }

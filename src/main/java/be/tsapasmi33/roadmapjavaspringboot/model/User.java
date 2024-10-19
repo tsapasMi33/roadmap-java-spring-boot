@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -42,6 +43,7 @@ public class User {
     private String role;
 
     @Column(name = "created_at", length = 60, nullable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     public User(String login, String firstname, String lastname, String role) {
