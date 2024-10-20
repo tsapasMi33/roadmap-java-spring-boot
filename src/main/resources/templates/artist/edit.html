@@ -12,31 +12,31 @@
     <div layout:fragment="content">
         <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
 
-        <form th:action="@{/artists/{id}/edit(id=${artist.id})}" th:object="${artist}" th:method="put">
+        <form class="mb-3" th:action="@{/artists/{id}/edit(id=${artist.id})}" th:object="${artist}" th:method="put">
             <div>
-                <label>Id:</label>
-                <span th:text="${artist.id}">1</span>
+                <label class="form-label">Id:</label>
+                <span class="form-text" th:text="${artist.id}">1</span>
             </div>
             <div>
-                <label>Firstname:</label>
-                <input type="text" th:field="*{firstname}">
-                <p th:if="${#fields.hasErrors('firstname')}"
+                <label class="form-label" for="firstname">Firstname:</label>
+                <input class="form-control" id="firstname" type="text" th:field="*{firstname}">
+                <p class="form-text" th:if="${#fields.hasErrors('firstname')}"
                    th:errors="*{firstname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label>Lastname:</label>
-                <input type="text" th:field="*{lastname}">
-                <p th:if="${#fields.hasErrors('lastname')}"
+                <label class="form-label" for="lastname">Lastname:</label>
+                <input class="form-control" id="lastname"  type="text" th:field="*{lastname}">
+                <p class="form-text" th:if="${#fields.hasErrors('lastname')}"
                    th:errors="*{lastname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <button type="submit" th:text="Edit">Edit</button>
-                <button type="reset" th:text="Reset">Reset</button>
-                <a th:href="${back}">Cancel</a>
+                <button class="btn btn-primary" type="submit" th:text="Edit">Edit</button>
+                <button class="btn btn-warning" type="reset" th:text="Reset">Reset</button>
+                <a class="btn btn-danger" th:href="${back}">Cancel</a>
             </div>
         </form>
 
-        <nav><a th:href="@{/artists}">Back to the List</a></nav>
+        <nav><a class="btn btn-secondary" th:href="@{/artists}">Back to the List</a></nav>
     </div>
 </div>
 </body>

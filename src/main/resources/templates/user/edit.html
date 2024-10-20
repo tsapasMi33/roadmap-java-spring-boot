@@ -12,44 +12,44 @@
     <div layout:fragment="content">
         <h1 th:text="|${user.firstname}  ${user.lastname}|">Bob Sull</h1>
 
-        <form th:action="@{/users/{id}/edit(id=${user.id})}" th:object="${user}" th:method="put">
+        <form class="mb-3" th:action="@{/users/{id}/edit(id=${user.id})}" th:object="${user}" th:method="put">
             <div>
-                <label>Id:</label>
-                <span th:text="${user.id}">1</span>
+                <label class="form-label">Id:</label>
+                <span class="form-text" th:text="${user.id}">1</span>
             </div>
             <div>
-                <label>Login:</label>
-                <input type="text" th:field="*{login}">
+                <label class="form-label" for="login">Login:</label>
+                <input class="form-control" id="login" type="text" th:field="*{login}">
                 <p th:if="${#fields.hasErrors('login')}"
                    th:errors="*{login}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label>Firstname:</label>
-                <input type="text" th:field="*{firstname}">
+                <label class="form-label" for="firstname">Firstname:</label>
+                <input class="form-control" id="firstname" type="text" th:field="*{firstname}">
                 <p th:if="${#fields.hasErrors('firstname')}"
                    th:errors="*{firstname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label>Lastname:</label>
-                <input type="text" th:field="*{lastname}">
+                <label class="form-label" for="lastname">Lastname:</label>
+                <input class="form-control" id="lastname" type="text" th:field="*{lastname}">
                 <p th:if="${#fields.hasErrors('lastname')}"
                    th:errors="*{lastname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label for="role">Role:</label>
-                <select id="role" th:field="*{role}">
+                <label class="form-label" for="role">Role:</label>
+                <select class="form-select" id="role" th:field="*{role}">
                     <option th:value="'admin'" th:text="Administrator"></option>
                     <option th:value="'member'" th:text="Member"></option>
                 </select>
             </div>
             <div>
-                <button type="submit" th:text="Edit">Edit</button>
-                <button type="reset" th:text="Reset">Reset</button>
-                <a th:href="${back}">Cancel</a>
+                <button class="btn btn-success" type="submit" th:text="Edit">Edit</button>
+                <button class="btn btn-warning" type="reset" th:text="Reset">Reset</button>
+                <a class="btn btn-danger" th:href="${back}">Cancel</a>
             </div>
         </form>
 
-        <nav><a th:href="@{/users}">Back to the List</a></nav>
+        <nav><a class="btn btn-secondary" th:href="@{/users}">Back to the List</a></nav>
     </div>
 </div>
 </body>

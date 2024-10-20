@@ -81,6 +81,7 @@ public class ArtistController {
     public String create(Model model) {
         Artist artist = new Artist(null, null);
         model.addAttribute("artist",artist);
+        model.addAttribute("back", "/artists");
         return "artist/create";
     }
 
@@ -90,6 +91,7 @@ public class ArtistController {
         if (bindingResult.hasErrors()) {
             return "artist/create";
         }
+
 
         artistService.addArtist(artist);
         return "redirect:/artists/" + artist.getId();

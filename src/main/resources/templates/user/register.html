@@ -11,47 +11,47 @@
 <div class="container">
     <div layout:fragment="content">
 
-        <form th:action="@{/register}" th:object="${user}" method="post">
+        <form class="mb-3" th:action="@{/register}" th:object="${user}" method="post">
             <div>
-                <label>Firstname:</label>
-                <input type="text" th:field="*{firstname}">
+                <label class="form-label" for="firstname">Firstname:</label>
+                <input class="form-control" id="firstname" type="text" th:field="*{firstname}">
                 <p th:if="${#fields.hasErrors('firstname')}"
                    th:errors="*{firstname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label>Lastname:</label>
-                <input type="text" th:field="*{lastname}">
+                <label class="form-label" for="lastname">Lastname:</label>
+                <input class="form-control" id="lastname" type="text" th:field="*{lastname}">
                 <p th:if="${#fields.hasErrors('lastname')}"
                    th:errors="*{lastname}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label>Email:</label>
-                <input type="email" th:field="*{email}">
+                <label class="form-label" for="email">Email:</label>
+                <input class="form-control" id="email" type="email" th:field="*{email}">
                 <p th:if="${#fields.hasErrors('email')}"
                    th:errors="*{email}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label for="language">Role:</label>
-                <select id="language" th:field="*{language}">
+                <label class="form-label" for="language">Role:</label>
+                <select class="form-select" id="language" th:field="*{language}">
                     <option th:value="'FR'" th:text="Français"></option>
                     <option th:value="'EN'" th:text="English"></option>
                 </select>
             </div>
             <div>
-                <label>Login:</label>
-                <input type="text" th:field="*{login}">
+                <label class="form-label" for="login">Login:</label>
+                <input class="form-control" id="login" type="text" th:field="*{login}">
                 <p th:if="${#fields.hasErrors('login')}"
                    th:errors="*{login}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <label>Password:</label>
-                <input type="password" th:field="*{password}">
+                <label class="form-label" for="password">Password:</label>
+                <input class="form-control" id="password" type="password" th:field="*{password}">
                 <p th:if="${#fields.hasErrors('password')}"
                    th:errors="*{password}" th:errorclass="fieldError"></p>
             </div>
             <div>
-                <button type="submit" th:text="Create">Create</button>
-                <a th:href="${back}">Cancel</a>
+                <button class="btn btn-primary" type="submit" th:text="Create">Create</button>
+                <a class="btn btn-danger" href="#" th:href="${back}">Cancel</a>
             </div>
         </form>
     </div>

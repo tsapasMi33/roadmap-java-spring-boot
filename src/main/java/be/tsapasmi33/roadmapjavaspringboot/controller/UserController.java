@@ -97,6 +97,7 @@ public class UserController {
 
         User user = new User(null, null, null, null);
         model.addAttribute("user",user);
+        model.addAttribute("back", "/artists");
 
         return "user/register";
     }
